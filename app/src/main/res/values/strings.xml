@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BacheFinder</string>
+    <string name="btn_genearet">Consumir</string>
 </resources>
