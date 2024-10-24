@@ -40,6 +40,7 @@ dependencies {
 
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.google.code.gson:gson:2.8.7")
+    implementation ("com.google.android.gms:play-services-auth:21.2.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

@@ -4,5 +4,8 @@
     <string name="id_view_photo">Visualización</string>
     <string name="btn_take_photo">Tomar foto</string>
     <string name="btn_validate_photo">Validar foto</string>
-    <string name="text_validate_photo"></string>
+    <string name="text_validate_photo">Respuesta</string>
+    <string name="api_h5">953293304369-bbsmfdb5frib49po8t08ik6vra83c5il.apps.googleusercontent.com</string>
+    <string name="btn_google">CONTINUAR CON GOOGLE</string>
+    <string name="mi_activity_login">Login</string>
 </resources>
