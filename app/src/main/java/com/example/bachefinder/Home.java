@@ -15,19 +15,23 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Objects;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Home extends AppCompatActivity {
     public TextView textResponse;
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView imageView;
     private ActivityResultLauncher<Intent> launcher;
+    private Bitmap imageBitmap;
 
 
     @Override
@@ -48,7 +52,7 @@ public class Home extends AppCompatActivity {
                             Bitmap bitmap = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
                             Bitmap rotatedBitmap = rotateBitmap(bitmap, 90);
                             Bitmap scaledBitmap = Bitmap.createScaledBitmap(rotatedBitmap, 100, 100, true);
-                            Bitmap imageBitmap = convertToGray(scaledBitmap);
+                            imageBitmap = convertToGray(scaledBitmap);
                             imageView.setImageBitmap(imageBitmap);
                         }
                     }
@@ -68,7 +72,12 @@ public class Home extends AppCompatActivity {
         validatePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendRequest();
+                if (imageBitmap != null) {
+                    sendRequest();
+                } else {
+                    textResponse.setText("Debes tomar primero una foto.");
+                }
+
             }
         });
     }
@@ -98,10 +107,20 @@ public class Home extends AppCompatActivity {
     private void sendRequest() {
         OkHttpClient client = new OkHttpClient();
 
-        String url = "http://192.168.100.15:8000/";
+        String url = "http://192.168.100.15:8000/predict";
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("file", "hueco.jpg", RequestBody.create(MediaType.parse("image/jpeg"), byteArray))
+                .build();
 
         Request request = new Request.Builder()
                 .url(url)
+                .post(requestBody)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
