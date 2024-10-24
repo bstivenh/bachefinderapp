@@ -112,7 +112,8 @@ public class Home extends AppCompatActivity {
     private void sendRequest() {
         OkHttpClient client = new OkHttpClient();
 
-        String url = "http://192.168.100.15:8000/predict";
+        // String url = "http://192.168.100.15:8000/predict";
+        String url = "http://172.20.10.3:8000/predict";
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
