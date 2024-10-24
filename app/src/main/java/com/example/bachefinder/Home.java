@@ -26,6 +26,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class Home extends AppCompatActivity {
     public TextView textResponse;
@@ -140,10 +143,40 @@ public class Home extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        textResponse.setText(responseBody);
+                        validateResponse(responseBody);
                     }
                 });
             }
         });
+    }
+
+    public void  validateResponse(String responseBody){
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(responseBody, JsonObject.class);
+        JsonArray jsonArray = (JsonArray) jsonObject.get("prediction").getAsJsonArray().get(0);
+        System.out.println(jsonArray);
+        int position = validateMaximum(jsonArray);
+
+        String[] listaTextos = {"Bache", "Descascaramiento", "Fisura en bloque",
+                "Fisura por deslizamiento", "Fisura por reflexión",
+                "Fisura transversal", "Fisura longitudinales y transversales",
+                "Hundimiento", "Parche", "Perdida de agregado",
+                "Piel de cocodrilo"};
+        textResponse.setText(listaTextos[position]);
+
+    }
+
+    public static int validateMaximum(JsonArray list) {
+        int position = 0;
+        double max = list.get(0).getAsDouble();
+
+        for (int i = 1; i < list.size(); i++) {
+            double valorActual = list.get(i).getAsDouble();
+            if (valorActual > max) {
+                max = valorActual;
+                position = i;
+            }
+        }
+        return position;
     }
 }
