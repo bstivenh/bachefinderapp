@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BacheFinder</string>
-    <string name="btn_genearet">Consumir</string>
+    <string name="mi_activity_home">Home</string>
+    <string name="id_view_photo">Visualización</string>
+    <string name="btn_take_photo">Tomar foto</string>
+    <string name="btn_validate_photo">Validar foto</string>
+    <string name="text_validate_photo"></string>
 </resources>
