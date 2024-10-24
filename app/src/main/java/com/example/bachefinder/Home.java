@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,6 +32,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class Home extends AppCompatActivity {
+    private static final String TAG = "ValidacionImagen";
     public TextView textResponse;
     private ImageView imageView;
     private ActivityResultLauncher<Intent> launcher;
@@ -151,10 +153,10 @@ public class Home extends AppCompatActivity {
     }
 
     public void  validateResponse(String responseBody){
+        Log.d(TAG, responseBody);
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(responseBody, JsonObject.class);
         JsonArray jsonArray = (JsonArray) jsonObject.get("prediction").getAsJsonArray().get(0);
-        System.out.println(jsonArray);
         int position = validateMaximum(jsonArray);
 
         String[] listaTextos = {"Bache", "Descascaramiento", "Fisura en bloque",

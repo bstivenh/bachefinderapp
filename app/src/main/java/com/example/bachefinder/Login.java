@@ -1,4 +1,5 @@
 package com.example.bachefinder;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -6,7 +7,6 @@ import androidx.activity.result.IntentSenderRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
@@ -79,6 +78,8 @@ public class Login extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
+                        Intent intent = new Intent(Login.this, Home.class);
+                        startActivity(intent);
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             try {
                                 SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
@@ -87,8 +88,8 @@ public class Login extends AppCompatActivity {
                                     String email = credential.getId();
                                     Log.d(TAG, "Google Sign-In exitoso para: " + email);
                                     Toast.makeText(getApplicationContext(), "Email: " + email, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login.this, Home.class);
-                                    startActivity(intent);
+                                    // Intent intent = new Intent(Login.this, Home.class);
+                                    // startActivity(intent);
                                 } else {
                                     Log.w(TAG, "No se pudo obtener ID Token");
                                 }
