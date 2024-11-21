@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">BacheFinder</string>
+    <string name="api_h5">953293304369-bbsmfdb5frib49po8t08ik6vra83c5il.apps.googleusercontent.com</string>
+    <string name="api_key_google">AIzaSyDBU9b6v8bKLoyCnCsiURY96yv7SwFaDSc</string>
+    <string name="person1">Nicolas Moreno</string>
+    <string name="person2">Eduardo Avila</string>
+    <string name="person3">Brayan Hernandez</string>
+    <string name="subject">Desarrollo de aplicaciones moviles nativas 6A</string>
+    <string name="id_view_photo">Visualización</string>
+    <string name="text_validate_photo">Respuesta</string>
+    <string name="btn_take_photo">Tomar foto</string>
+    <string name="btn_validate_photo">Validar foto</string>
+    <string name="btn_google">CONTINUAR CON GOOGLE</string>
+    <string name="btn_ia">IA</string>
+    <string name="btn_gps">GPS</string>
+    <string name="hint_latitud">Latitud</string>
+    <string name="hint_longitud">Longitud</string>
+    <string name="editTextUsername">Usuario</string>
+    <string name="editTextPassword">Contraseña</string>
+    <string name="buttonLogin">Iniciar Sesión</string>
+    <string name="mi_activity_login">Login</string>
+    <string name="mi_activity_home">Home</string>
+    <string name="mi_activity_ia">IA</string>
+    <string name="mi_activity_gps">GPS</string>
 </resources>
