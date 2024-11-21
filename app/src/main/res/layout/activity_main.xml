@@ -8,9 +8,10 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/person1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nicolas Moreno"
+        android:text="@string/person1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,9 +19,10 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
+        android:id="@+id/person2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eduardo Avila"
+        android:text="@string/person2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -29,9 +31,10 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <TextView
+        android:id="@+id/person3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Brayan Hernandez"
+        android:text="@string/person3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -40,10 +43,10 @@
         app:layout_constraintVertical_bias="0.556" />
 
     <TextView
+        android:id="@+id/subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Desarrollo de aplicaciones moviles nativas 6A"
-        android:textColor="#000000"
+        android:text="@string/subject"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

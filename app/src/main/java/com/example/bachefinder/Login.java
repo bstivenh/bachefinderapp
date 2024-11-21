@@ -80,6 +80,7 @@ public class Login extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         Intent intent = new Intent(Login.this, Home.class);
                         startActivity(intent);
+                        finish();
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             try {
                                 SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
