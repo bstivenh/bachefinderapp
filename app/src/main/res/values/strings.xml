@@ -15,6 +15,9 @@
     <string name="btn_gps">GPS</string>
     <string name="hint_latitud">Latitud</string>
     <string name="hint_longitud">Longitud</string>
+    <string name="editTextUsername">Usuario</string>
+    <string name="editTextPassword">Contraseña</string>
+    <string name="buttonLogin">Iniciar Sesión</string>
     <string name="mi_activity_login">Login</string>
     <string name="mi_activity_home">Home</string>
     <string name="mi_activity_ia">IA</string>

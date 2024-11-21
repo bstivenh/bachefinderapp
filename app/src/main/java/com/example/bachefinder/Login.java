@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
@@ -40,6 +41,11 @@ public class Login extends AppCompatActivity {
 
     private ActivityResultLauncher<IntentSenderRequest> activityResultLauncher;
 
+    // Configuración Usuario y Contraseña
+    private EditText editTextUsername;
+    private EditText editTextPassword;
+    private Button buttonLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +55,35 @@ public class Login extends AppCompatActivity {
         configurarGoogleSignIn();
         configurarActivityResultLauncher();
         configurarBotonLogin();
+
+        editTextUsername = findViewById(R.id.editTextUsername);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        buttonLogin = findViewById(R.id.buttonLogin);
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
     }
 
+    // Fución inicio de sesion con usuario
+    private void login() {
+        String username = editTextUsername.getText().toString();
+        String password = editTextPassword.getText().toString();
+
+        if (username.equals("Admin") && password.equals("123456789")) {
+            Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Login.this, Home.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Funciones inicio con google
     private void inicializarVistas() {
         button = findViewById(R.id.btn_google);
         Log.d(TAG, "Vistas inicializadas");
@@ -78,6 +111,7 @@ public class Login extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
+                        Toast.makeText(Login.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Login.this, Home.class);
                         startActivity(intent);
                         finish();
